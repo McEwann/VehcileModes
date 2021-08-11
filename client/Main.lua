@@ -22,8 +22,6 @@ Citizen.Wait(0)
                         pursuitmode = false 
                     end
                 end
-			else
-				TriggerEvent("chatMessage", 'Normal')
             end
 		end
 	end	
