@@ -1,4 +1,4 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
 name 'VehicleModes'
@@ -7,9 +7,9 @@ author 'McEwan'
 version 'v 1.0'
 
 client_scripts {
-    'Main.lua',
+    'client/Main.lua',
 }
 
 server_scripts {
-    'Main.lua',
+    'client/Main.lua',
 }
