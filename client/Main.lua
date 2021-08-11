@@ -1,5 +1,5 @@
 
-local pursuitmode = true -- Toggle
+local pursuitmode = false -- Toggle
 local toggle = 118 -- Numpad 9
 local vehicle = GetVehiclePedIsIn(player)
 local Interceptor_hash = GetHashKey("2015polstang")--Get Hash of mustang / pursuit vehicle
@@ -16,8 +16,10 @@ Citizen.Wait(0)
                     --Vehicle modifiers must be looped every tick
                     SetVehicleEnginePowerMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 1.5)
                     SetVehicleEngineTorqueMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 1.5)
+                    print("test")
+                    
                     --Break Loop
-                    if IsControlJustPressed(1, 118) then
+                    if IsControlJustPressed(1, 118) or IsPedOnFoot(PlayerPedId()) then
                         TriggerEvent("chatMessage", 'Patrol Mode')
                         pursuitmode = false 
                     end
