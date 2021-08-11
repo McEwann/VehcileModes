@@ -1,34 +1,45 @@
---Client File
---Author McEewan
 
---Config
-local toggle_chasemode = 97 -- Toggle interceptor mode
-
-
-
---Start
-local vehicle_hash = GetHashKey("2015polstang")
-local chasemode = false
+local pursuitmode = true -- on/off speed
+local toggle = 118 -- Numpad 9
+local vehicle = GetVehiclePedIsIn(player)
+local Interceptor_hash = GetHashKey("2015polstang")
 
 
-Citizen.CreateThread(funtion()
-While true do
+-- Thread
+Citizen.CreateThread(function()
 
-    
-        if IsControlJustPressed(0, toggle_chasemode) then -- Toggle multipliers
-            chasemode = true
-        end
-    end
-        
-        
+
+	while true do
+    Citizen.Wait(0)
+    if IsControlJustPressed(1, 118) and IsPlayerInInterceptor() then
+        pursuitmode = not pursitmode
+
+			if pursuitmode then
+				TriggerEvent("chatMessage", 'persuit mode')
+                while pursuitmode do
+                    Citizen.Wait(0)
+                    
+                    SetVehicleEnginePowerMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 20.0)
+                    SetVehicleEngineTorqueMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 20.0)
+                    print("weewoo")
+
+                    if IsControlJustPressed(1, 118) then
+                        TriggerEvent("chatMessage", 'Normal')
+                        pursuitmode = false 
+                    end
+                end
+			else
+				TriggerEvent("chatMessage", 'Normal')
+                SetVehicleCheatPowerIncrease(GetVehiclePedIsIn(ped, false), 1)
+
+            end
+		end
+	end	
 end)
 
-if chasemode then
-    SetVehicleCheatPowerIncrease(vehicle_hash, 200)
-    
-end
-function IsPlayerInMustang()
+-- Function
+function IsPlayerInInterceptor()
 	local lPed = GetPlayerPed(-1)
 	local vehicle = GetVehiclePedIsIn(lPed)
-	return IsVehicleModel(vehicle, vehicle_hash)
+	return IsVehicleModel(vehicle, Interceptor_hash)
 end
