@@ -7,9 +7,9 @@ author 'McEwan'
 version 'v 1.0'
 
 client_scripts {
-    'Client.lua',
+    'Main.lua',
 }
 
 server_scripts {
-    'Server.lua',
+    'Main.lua',
 }
