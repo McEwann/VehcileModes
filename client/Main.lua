@@ -18,8 +18,10 @@ While true do
         if IsControlJustPressed(0, toggle_chasemode) then -- Toggle multipliers
             chasemode = true
         end
-
-)
+    end
+        
+        
+end)
 
 if chasemode then
     SetVehicleCheatPowerIncrease(vehicle_hash, 200)
