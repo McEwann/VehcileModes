@@ -1,2 +1,0 @@
---Server lua
---Author McEwan
