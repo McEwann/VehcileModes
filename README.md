@@ -9,4 +9,4 @@ Vehicle boost is being handled by SetVehicleEnginepowermult & SetVehicleTorqueMu
 
 
 This is a very simple script just done as a test, I have plans to make an actual resource out of this with different modes that are more customisable and possibly using 
-vehicle meta handling updates.
+vehicle meta handling updates for the sake of performance.
