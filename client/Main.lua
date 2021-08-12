@@ -24,7 +24,7 @@ while true do
                     SetVehicleEnginePowerMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 1.5)
                     SetVehicleEngineTorqueMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 1.5)
                     
-                    --Break Loop condition (keypress exit)
+                    --Break Loop condition (keypress exit) and Vehicle Exit "IsPedOnFoot(PlayerPedId()"
                     if  IsDisabledControlPressed (1,36) and IsControlJustPressed(1, 173) or IsPedOnFoot(PlayerPedId()) then -- Exit on keypress current CRTL + Down Arrow
                         TriggerEvent("chatMessage", 'Vehicle Mode: Patrol')
                         pursuitmode = false 
