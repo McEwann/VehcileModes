@@ -1,14 +1,20 @@
 
 local pursuitmode = false -- Toggle
-local vehmode_key = 172  -- Numpad 9
 local vehicle = GetVehiclePedIsIn(player)
-local Interceptor_hash = GetHashKey("2015polstang")--Get Hash of mustang / pursuit vehicle
 
+
+--Get Hash of mustang / pursuit vehicle
+-- Add more by using the same method and updating the function at the bottom with "or IsVehicleModel(vehicle, *newhasname_hash*)"
+local Interceptor_hash = GetHashKey("2015polstang")
+
+
+
+--Start Thread
 Citizen.CreateThread(function()
 while true do
-Citizen.Wait(0)
+    Citizen.Wait(0)
 
-    if IsDisabledControlPressed (1, 36) and IsControlJustPressed(1, vehmode_key) and IsPlayerInInterceptor() then
+    if IsDisabledControlPressed (1, 36) and IsControlJustPressed(1, vehmode_key) and IsPlayerInInterceptor() then  --Toggle mode current CTRL + Up Arrow
         pursuitmode = not pursuitmode
             if pursuitmode then
 				TriggerEvent("chatMessage", 'Vehicle Mode: Pursuit')
@@ -18,8 +24,8 @@ Citizen.Wait(0)
                     SetVehicleEnginePowerMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 1.5)
                     SetVehicleEngineTorqueMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), true), 1.5)
                     
-                    --Break Loop
-                    if  IsDisabledControlPressed (1,36) and IsControlJustPressed(1, 173) or IsPedOnFoot(PlayerPedId()) then
+                    --Break Loop condition (keypress exit)
+                    if  IsDisabledControlPressed (1,36) and IsControlJustPressed(1, 173) or IsPedOnFoot(PlayerPedId()) then -- Exit on keypress current CRTL + Down Arrow
                         TriggerEvent("chatMessage", 'Vehicle Mode: Patrol')
                         pursuitmode = false 
                         
@@ -28,7 +34,7 @@ Citizen.Wait(0)
             end
 		end
 	end	
-end)
+end) --End Thread
 
 
 
